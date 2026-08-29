@@ -4,7 +4,17 @@ from curl_cffi import requests
 
 app = FastAPI()
 
+# ১. মূল ডোমেনে (/) ঢুকলে যেন 404 এরর না আসে
 @app.get("/")
+def home():
+    return {
+        "status": "online",
+        "message": "API is working successfully! Use /api?message=YOUR_MESSAGE",
+        "API OWNER": "DIPTO",
+        "CHANNEL": "https://t.me/Xrror_404"
+    }
+
+# ২. মূল API Endpoint (/api)
 @app.get("/api")
 @app.post("/api")
 def chat(message: str = Query("তোমাকে কে তৈরি করেছে")):
